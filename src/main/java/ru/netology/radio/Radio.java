@@ -1,65 +1,98 @@
 package ru.netology.radio;
 
 public class Radio {
-    private int currentVolume;
-    private int currentChannel;
+
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int maxChannel = 9;
+    private int minChannel = 0;
+    private int currentVolume = minVolume;
+    private int currentChannel = minChannel;
+
+    public Radio(int size) {
+        maxChannel = minChannel + size - 1;
+    }
+
+    public Radio() {
+        // this.minChannel = minChannel;
+        // this.maxChannel = maxChannel;
+        //this.currentChannel = minChannel;
+    }
+
 
     public int getCurrentVolume() {
         return currentVolume;
     }
+
+    public int getMaxVolume() {
+        return maxVolume;
+    }
+
+    public int getMinVolume() {
+        return minVolume;
+    }
+
+    public int getMaxChannel() {
+        return maxChannel;
+    }
+
+    public int getMinChannel() {
+        return minChannel;
+    }
+
     public void setCurrentVolume(int newCurrentVolume) {
-       if (newCurrentVolume < 0) {
-           return;
-       }
-       if (newCurrentVolume > 100) {
-           return;
-       }
+        if (newCurrentVolume < minVolume) {
+            return;
+        }
+        if (newCurrentVolume > maxVolume) {
+            return;
+        }
         currentVolume = newCurrentVolume;
     }
 
-    public  int getCurrentChannel(){
+    public int getCurrentChannel() {
         return currentChannel;
     }
 
     public void setCurrentChannel(int newCurrentChannel) {
-        if (newCurrentChannel < 0) {
+        if (newCurrentChannel < minChannel) {
             return;
         }
-        if (newCurrentChannel > 9) {
-        return;
+        if (newCurrentChannel > maxChannel) {
+            return;
         }
         currentChannel = newCurrentChannel;
     }
 
     public void setNextChannel() {
-        if (currentChannel < 9) {
+        if (currentChannel < maxChannel) {
             currentChannel = currentChannel + 1;
         } else {
-            currentChannel = 0;
+            currentChannel = minChannel;
         }
     }
 
     public void setPrevChannel() {
-        if (currentChannel > 0) {
+        if (currentChannel > minChannel) {
             currentChannel = currentChannel - 1;
         } else {
-            currentChannel = 9;
+            currentChannel = maxChannel;
         }
     }
 
     public void setPlusVolume() {
-        if (currentVolume < 100) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
         } else {
-            currentVolume = 100;
+            currentVolume = maxVolume;
         }
     }
 
     public void setMinusVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
         } else {
-            currentVolume = 0;
+            currentVolume = minVolume;
         }
     }
 }
