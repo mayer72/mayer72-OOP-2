@@ -14,9 +14,9 @@ public class Radio {
     }
 
     public Radio() {
-        // this.minChannel = minChannel;
-        // this.maxChannel = maxChannel;
-        //this.currentChannel = minChannel;
+        this.minChannel = minChannel;
+        this.maxChannel = maxChannel;
+        this.currentChannel = minChannel;
     }
 
 
